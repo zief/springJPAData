@@ -1,6 +1,7 @@
 package id.cobacrud.demo.springdatajpa;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -45,6 +46,15 @@ public class SpringDataJpaApplication implements CommandLineRunner{
 		System.out.println("saving appUser2 . . .");
 		this.appUserRepository.save(appUser2);
 		System.out.println("appUser2 saved.");
+		
+		System.out.println("Getting users data . . . ");
+		List<AppUser> users = this.appUserRepository.findAll();
+		System.out.println(String.format("Found %d users!", users.size()));
+		
+		System.out.println("Displaying users . . . ");
+		for(AppUser user : users) {
+			System.out.println(user);
+		}
 		
 	}
 }
